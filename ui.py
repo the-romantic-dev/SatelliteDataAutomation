@@ -17,7 +17,7 @@ def build_path_field(root, label: str, default_insert: str, button_command, row:
     entry = tk.Entry(root, width=50)
     entry.grid(row=row, column=1)
     entry.insert(0, default_insert)
-    tk.Button(root, text="Обзор", command=button_command).grid(row=row, column=2)
+    tk.Button(root, text="Browse", command=button_command).grid(row=row, column=2)
     return entry
 
 
@@ -42,7 +42,7 @@ class DecoderUI:
 
     def build_ui(self):
         root = tk.Tk()
-        root.title("Интерфейс скрипта")
+        root.title("Interface")
 
         # Загрузка сохраненной конфигурации
         config = load_config()
@@ -51,7 +51,7 @@ class DecoderUI:
         default_exe_path = config[SATDUMP_PATH_NAME]
         self.satdump_folder_entry = build_path_field(
             root=root,
-            label="Путь к папке SatDump:",
+            label="The path to the SatDump folder:",
             default_insert=default_exe_path,
             button_command=self.browse_satdump_folder,
             row=0
@@ -61,7 +61,7 @@ class DecoderUI:
         default_input_path = config[INPUT_PATH_NAME]
         self.input_folder_entry = build_path_field(
             root=root,
-            label="Папка с входными данными:",
+            label="The folder with the input data:",
             default_insert=default_input_path,
             button_command=self.browse_input_folder,
             row=1
@@ -71,14 +71,14 @@ class DecoderUI:
         default_output_path = config[OUTPUT_PATH_NAME]
         self.output_folder_entry = build_path_field(
             root=root,
-            label="Папка с результатами:",
+            label="Results folder:",
             default_insert=default_output_path,
             button_command=self.browse_output_folder,
             row=2
         )
 
         # Кнопка запуска скрипта
-        self.run_button = tk.Button(root, text="Запустить скрипт", command=self.run_script)
+        self.run_button = tk.Button(root, text="Run the script", command=self.run_script)
         self.run_button.grid(row=3, column=1)
 
         # Индикатор прогресса
