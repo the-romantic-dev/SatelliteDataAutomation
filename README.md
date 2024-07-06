@@ -15,11 +15,12 @@
 ### Input format
 For the handler to work correctly, the input data folder must have the following format
 
-![image](https://github.com/Chrisnisch/SatelliteDataAutomation/assets/86834957/933f3501-fb2d-43cf-b8b7-6518767f7189)
+![image](https://github.com/Chrisnisch/SatelliteDataAutomation/assets/86834957/59c3d2d9-6e8d-443c-aa3f-89e73d4aaef8)
 
 ## Supported types of data
 - Aqua
 - Elektro-L3
 - Suomi NPP
+- Terra
 
 > The rest are at work
