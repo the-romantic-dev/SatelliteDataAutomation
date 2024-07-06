@@ -13,7 +13,7 @@ def get_tle_filename(satellite_type: SatelliteType):
         case SatelliteType.SUOMI_NPP:
             return "SUOMI_NPP_TLE.txt"
         case _:
-            raise ValueError("Неизвестный тип спутника")
+            raise ValueError("Unknown satellite type")
 
 
 def refactor_cord_for_filename(cord):

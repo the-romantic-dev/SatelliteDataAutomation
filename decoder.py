@@ -16,7 +16,7 @@ PROCESSED_FLAG = "processed"
 
 @dataclass
 class DecodingArgs:
-    """Дата-класс для хранения аргументов передаваемых в декодер"""
+    """Date class for storing arguments passed to the decoder"""
     exe_path: str
     satellite_type: SatelliteType
     data_subdir: str
@@ -25,29 +25,29 @@ class DecodingArgs:
 
 
 def run_decoder(args: DecodingArgs):
-    """Декодирует один файл с помощью satdump.exe лежащего в папке установки Satdump по пути exe_path"""
+    """Decodes a single file using satdump.exe located in the Satdump installation folder on the exe_path path"""
 
     pipeline_id = get_pipeline_by_satellite_type(args.satellite_type)
     command = (f'\"{args.exe_path}\" {pipeline_id} cadu '
                f'\"{args.data_subdir}\\{args.input_filename}\" \"{args.output_subdir}\\{DEFAULT_FOLDER}\"')
 
-    print(f'Декодинг файла {args.input_filename}')
+    print(f'Decoding a file {args.input_filename}')
     start_time = time.time()
     subprocess.run(command, shell=True, check=True, text=True, capture_output=True)
     end_time = time.time()
-    print(f'Файл {args.input_filename} успешно декодирован в папку {args.output_subdir}')
-    print(f"Время декодирования: {end_time - start_time} секунд")
+    print(f'File {args.input_filename} successfully decoded to a folder {args.output_subdir}')
+    print(f"Decoding time: {end_time - start_time} seconds")
 
 
 def decode_all(exe_path, data_dir, output_dir, progress_var, callback):
-    """Декодирует все файлы в папке data_dir последовательно с помощью run_decoder()"""
+    """Decodes all files in the data_dir folder sequentially using run_decoder()"""
 
     data_folders = os.listdir(data_dir)
     files_total_count = count_files(data_dir)
-    print(f"Всего файлов с данными: {files_total_count}")
+    print(f"Total data files: {files_total_count}")
     if files_total_count == 0:
         callback()
-        print("Нет файлов для декодирования")
+        print("There are no files to decode")
         return
 
     tick = 1000 / files_total_count
@@ -80,7 +80,7 @@ def decode_all(exe_path, data_dir, output_dir, progress_var, callback):
 
 
 def rename_output_subdir(args: DecodingArgs):
-    """Переименовывает папку с результатом декодирования составляя название из даты и положения спутника"""
+    """Renames the folder with the decoding result, making up the name from the date and position of the satellite"""
     if args.satellite_type == SatelliteType.ELEKTRO_L3:
         date_obj = filename_to_date(args.input_filename)
     else:

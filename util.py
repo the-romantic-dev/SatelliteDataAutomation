@@ -18,7 +18,7 @@ def get_pipeline_by_satellite_type(satellite_type: SatelliteType):
         case SatelliteType.SUOMI_NPP:
             return "npp_hrd"
         case _:
-            raise ValueError("Неизвестный тип спутника")
+            raise ValueError("Unknown satellite type")
 
 
 def get_satellite_type_by_data_subdir(data_folder):
@@ -30,7 +30,7 @@ def get_satellite_type_by_data_subdir(data_folder):
         case 'suomi npp':
             return SatelliteType.SUOMI_NPP
         case _:
-            raise ValueError("Неизвестный тип спутника")
+            raise ValueError("Unknown satellite type")
 
 
 def count_files(directory):
