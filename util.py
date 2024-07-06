@@ -7,6 +7,9 @@ class SatelliteType(Enum):
     AQUA = 0
     ELEKTRO_L3 = 1
     SUOMI_NPP = 2
+    TERRA = 3
+    METEOR = 4
+    NOAA = 5
 
 
 def get_pipeline_by_satellite_type(satellite_type: SatelliteType):
@@ -17,6 +20,12 @@ def get_pipeline_by_satellite_type(satellite_type: SatelliteType):
             return "elektro_rdas"
         case SatelliteType.SUOMI_NPP:
             return "npp_hrd"
+        case SatelliteType.TERRA:
+            return 'terra_db'
+        case SatelliteType.METEOR:
+            return '_'  # work in progress
+        case SatelliteType.NOAA:
+            return '_'  # work in progress
         case _:
             raise ValueError("Unknown satellite type")
 
@@ -29,6 +38,12 @@ def get_satellite_type_by_data_subdir(data_folder):
             return SatelliteType.ELEKTRO_L3
         case 'suomi npp':
             return SatelliteType.SUOMI_NPP
+        case 'terra':
+            return SatelliteType.TERRA
+        case 'meteor':
+            return SatelliteType.METEOR
+        case 'noaa':
+            return SatelliteType.NOAA
         case _:
             raise ValueError("Unknown satellite type")
 
