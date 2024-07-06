@@ -4,7 +4,8 @@
 
 ## How to use
 
-![image](https://github.com/Chrisnisch/SatelliteDataAutomation/assets/86834957/40c8bbe5-dedc-4cbb-ab2d-99c0363bb54d)
+![image](https://github.com/Chrisnisch/SatelliteDataAutomation/assets/86834957/9732bcb2-012c-49be-aeb4-18a8a1c361a5)
+
 
 - In the first field specify the path to the SatDump folder
 - In the second field specify the path to satellite data
